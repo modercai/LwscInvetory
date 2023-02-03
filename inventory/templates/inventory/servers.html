@@ -1,0 +1,86 @@
+{% extends 'inventory/base.html'%}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Servers</h1>
+    <nav class="navbar bg-body-tertiary">
+      <form class="d-flex" role="search", method='POST', action="{% url 'search-servers'%}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search", name="searched_server" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </nav>
+</br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Serial</th>
+        <th scope="col">Processor</th>
+        <th scope="col">Speed</th>
+        <th scope="col">Name</th>
+        <th scope="col">Year_Purchased</th>
+        <th scope="col">Ram</th>
+        <th scope="col">HDD</th>
+        <th scope="col">Operating System</th>
+        <th scope="col">Application</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {%if searched_server%}
+        <h1>Search Results </h1>
+        {% for server in servers%}
+<tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{server.model}}</td>
+      <td>{{server.serial_number}}</td>
+      <td>{{server.processor}}</td>
+      <td>{{server.speed}}</td>
+      <td>{{server.name}}</td>
+      <td>{{server.year_purchased}}</td>
+      <td>{{server.ram}}</td>
+      <td>{{server.storage_capacity}}</td>
+      <td>{{server.operating_system}}</td>
+      <td>{{server.application}}</td>
+      <td>{{server.status}}</td>
+      
+    </tr>
+  </tbody>
+  {% endfor %}
+        {% else %}
+{% for servers in server_list%}
+<tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{servers.model}}</td>
+      <td>{{servers.serial_number}}</td>
+      <td>{{servers.processor}}</td>
+      <td>{{servers.speed}}</td>
+      <td>{{servers.name}}</td>
+      <td>{{servers.year_purchased}}</td>
+      <td>{{servers.ram}}</td>
+      <td>{{servers.storage_capacity}}</td>
+      <td>{{servers.operating_system}}</td>
+      <td>{{servers.application}}</td>
+      <td>{{servers.status}}</td>
+      
+      
+    </tr>
+  </tbody>
+{% endfor %}
+{% endif %}
+</table>
+</body>
+</html>
+{%endblock%}

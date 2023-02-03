@@ -1,0 +1,68 @@
+{% extends 'inventory/base.html'%}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printers</title>
+</head>
+<body>
+    <h1>Printers</h1>
+</br>
+    <nav class="navbar bg-body-tertiary">
+    <form class="d-flex" role="search", method='POST', action="{% url 'search-printers'%}">
+      {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search", name="searched_printer" required>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </nav>
+  </br>
+</br>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Location</th>
+            <th scope="col">Year_Purchased</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        {%if searched_printer%}
+        <h1>Search Results </h1>
+        {% for printer in printers%}
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>{{printer.model}}</td>
+            <td>{{printer.serial_number}}</td>
+            <td>{{printer.location}}</td>
+            <td>{{printer.year_purchased}}</td>
+            <td>{{printer.status}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+        {% else %}
+        {% for printers in printer_list%}
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>{{printers.model}}</td>
+            <td>{{printers.serial_number}}</td>
+            <td>{{printers.location}}</td>
+            <td>{{printers.year_purchased}}</td>
+            <td>{{printers.status}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+        {% endif %}
+      </table>
+</body>
+</html>
+{%endblock%}

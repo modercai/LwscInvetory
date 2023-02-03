@@ -1,0 +1,76 @@
+{% extends 'inventory/base.html'%}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptops</title>
+</head>
+<body>
+    <h1>Laptops</h1>
+    <nav class="navbar bg-body-tertiary">
+      <form class="d-flex" role="search", method='POST', action="{% url 'search-laptops'%}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search", name="searched_laptop" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </nav>
+</br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Serial</th>
+        <th scope="col">Computer Name</th>
+        <th scope="col">User</th>
+        <th scope="col">Location</th>
+        <th scope="col">Year_Purchased</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {%if searched_laptop%}
+    <h1>Search Results </h1>
+    {% for laptop in laptops%}
+    <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{laptop.model}}</td>
+          <td>{{laptop.serial_number}}</td>
+          <td>{{laptop.computer_name}}</td>
+          <td>{{laptop.user}}</td>
+          <td>{{laptop.location}}</td>
+          <td>{{laptop.year_purchased}}</td>
+          
+          
+        </tr>
+      </tbody>
+    {% endfor %}
+    {% else %}
+    {% for laptops in laptop_list%}
+    <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{laptops.model}}</td>
+          <td>{{laptops.serial_number}}</td>
+          <td>{{laptops.computer_name}}</td>
+          <td>{{laptops.user}}</td>
+          <td>{{laptops.location}}</td>
+          <td>{{laptops.year_purchased}}</td>
+          
+          
+        </tr>
+      </tbody>
+    {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>
+{%endblock%}
+
+
+
+

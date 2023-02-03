@@ -1,0 +1,75 @@
+{% extends 'inventory/base.html'%}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Desktops</h1>
+    <nav class="navbar bg-body-tertiary">
+      <form class="d-flex" role="search", method='POST', action="{% url 'search-desktops'%}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search", name="searched_desktop" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </nav>
+</br>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Serial</th>
+        <th scope="col">Computer Name</th>
+        <th scope="col">User</th>
+        <th scope="col">Location</th>
+        <th scope="col">Year_Purchased</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {%if searched_desktop%}
+        <h1>Search Results </h1>
+
+        {% for desktop in desktops%}
+        <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td>{{desktop.model}}</td>
+              <td>{{desktop.serial_number}}</td>
+              <td>{{desktop.computer_name}}</td>
+              <td>{{desktop.user}}</td>
+              <td>{{desktop.location}}</td>
+              <td>{{desktop.year_purchased}}</td>
+              
+              
+            </tr>
+          </tbody>
+        {% endfor %}
+
+        {% else %}
+
+    {% for desktops in desktop_list%}
+    <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{desktops.model}}</td>
+          <td>{{desktops.serial_number}}</td>
+          <td>{{desktops.computer_name}}</td>
+          <td>{{desktops.user}}</td>
+          <td>{{desktops.location}}</td>
+          <td>{{desktops.year_purchased}}</td>
+          
+        </tr>
+      </tbody>
+    {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>
+{%endblock%}
