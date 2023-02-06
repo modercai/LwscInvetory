@@ -1,5 +1,5 @@
 {% extends 'inventory/base.html'%}
-
+{% load static %}
 {%block content%}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +7,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+
+    <style>
+      body{
+        background-image: url("{% static '/images/lwsc.png' %}");
+        background-repeat: no-repeat;
+        background-size: 29%;
+        background-position: center;
+        backdrop-filter: blur(1.5px);
+          
+    }
+    </style>
+
+    
 </head>
+
+
 <body>
-    <h1>Home page</h1>
+    <h1>Records</h1>
+</br>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{desktop_count}}</h1>
+        <p class="card-text">Desktops</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{laptop_count}}</h1>
+        <p class="card-text">Laptops</p>
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{printer_count}}</h1>
+        <p class="card-text">Printers</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{server_count}}</h1>
+        <p class="card-text">Servers</p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 {%endblock%}

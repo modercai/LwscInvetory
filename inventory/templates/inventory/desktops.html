@@ -41,12 +41,11 @@
             <tr>
               <th scope="row"></th>
               <td>{{desktop.model}}</td>
-              <td>{{desktop.serial_number}}</td>
+              <td>{{desktop.serialnumber}}</td>
               <td>{{desktop.computer_name}}</td>
               <td>{{desktop.user}}</td>
               <td>{{desktop.location}}</td>
               <td>{{desktop.year_purchased}}</td>
-              
               
             </tr>
           </tbody>
@@ -59,7 +58,7 @@
         <tr>
           <th scope="row"></th>
           <td>{{desktops.model}}</td>
-          <td>{{desktops.serial_number}}</td>
+          <td>{{desktops.serialnumber}}</td>
           <td>{{desktops.computer_name}}</td>
           <td>{{desktops.user}}</td>
           <td>{{desktops.location}}</td>
@@ -68,8 +67,10 @@
         </tr>
       </tbody>
     {% endfor %}
+    
     {% endif %}
 </table>
+<p>{{desktop_count}}</p>
 </body>
 </html>
 {%endblock%}
