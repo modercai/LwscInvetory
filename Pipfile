@@ -5,6 +5,14 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-import-export = "*"
+gunicorn = "*"
+pipenv = "*"
+virtualenv = "*"
+django-allauth = "*"
+pillow = "*"
+psycopg = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

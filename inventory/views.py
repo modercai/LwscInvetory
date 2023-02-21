@@ -1,5 +1,13 @@
 from django.shortcuts import render
 from .models import Desktop, Laptop, Printer, Server
+from .resources import DesktopResource
+from .resources import LaptopResource
+from .resources import PrinterResource
+from .resources import ServerResource
+from django.contrib import messages
+from django.http import HttpResponse
+from tablib import Dataset
+
 
 # Create your views here.
 def home(request):
@@ -63,14 +71,6 @@ def search_servers(request):
     else:
         return render(request,'inventory/servers.html',{})
 
-
-#counting the numbe of items in the database
-    
-#def desktopCount(request):
-    #count= Desktop.objects.all()
-    #return render(request, 'inventory/home.html', {'count': count})
-    
-    
     
 # make a check for the search and determine the appropriate response.
 # remove the search bar from the navigation bar and make the navigation bar look beautiful.

@@ -13,6 +13,8 @@ urlpatterns = [
     path('search_server',views.search_servers,name='search-servers'),
     #printers
     path('printers',views.all_printers,name='list-printers'),
+  
+    
     
     
 ]
