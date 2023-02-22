@@ -13,6 +13,7 @@ django-allauth = "*"
 pillow = "*"
 psycopg = "*"
 psycopg2-binary = "*"
+whitenoise = "*"
 
 [dev-packages]
 
