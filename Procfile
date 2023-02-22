@@ -1,0 +1,1 @@
+web: gunicorn LwscInvetory.wsgi --log-file -

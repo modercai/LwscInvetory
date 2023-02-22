@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    background-image: url("{% static '/images/lwsc.png' %}");
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    background-filter: blur(8px);   
+}
