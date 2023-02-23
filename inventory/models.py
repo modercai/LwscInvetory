@@ -4,7 +4,7 @@ from django.db import models
 class Desktop(models.Model):
     model = models.CharField(max_length=50,null=True,blank=True,)
     serialnumber = models.CharField(max_length=50,unique=True,null=True, blank=True)
-    computer_name = models.CharField(max_length=50)
+    computer_name = models.CharField(max_length=50,null=True,blank=True,)
     user = models.CharField(max_length=50)
     location = models.CharField(max_length=50,null=True,blank=True,)
     year_purchased = models.CharField(null=True,blank=True, max_length=4,)
@@ -16,9 +16,9 @@ class Desktop(models.Model):
 class Laptop(models.Model):
     model = models.CharField(max_length=50,null=True,blank=True,)
     serialnumber = models.CharField(max_length=50,unique=True,null=True, blank=True)
-    computer_name = models.CharField(max_length=50)
+    computer_name = models.CharField(max_length=50,null=True,blank=True,)
     user = models.CharField(max_length=50)
-    location = models.CharField(max_length=50)
+    location = models.CharField(max_length=50,null=True,blank=True,)
     year_purchased = models.CharField(null=True,max_length=4, blank=True)
     active = models.BooleanField(default=True)
 
@@ -28,9 +28,9 @@ class Laptop(models.Model):
 class Printer(models.Model):
     model = models.CharField(max_length=50)
     serialnumber = models.CharField(max_length=50,unique=True,null=True, blank=True)
-    location =models.CharField(max_length=50)
+    location = models.CharField(max_length=50,null=True,blank=True,)
     year_purchased = models.CharField(max_length=4,null=True,blank=True,)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50,null=True,blank=True,)
     active = models.BooleanField(default=True)
     
     def __str__(self):
@@ -39,11 +39,11 @@ class Printer(models.Model):
 class Server(models.Model):
     model = models.CharField(max_length=50)
     serialnumber = models.CharField(max_length=50,unique=True,null=True, blank=True)
-    processor = models.CharField(max_length=50)
-    speed = models.CharField(max_length=50)
+    processor = models.CharField(max_length=50,null=True,blank=True,)
+    speed = models.CharField(max_length=50,null=True,blank=True,)
     #user name not applicable
     #find out if location is applicable 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,null=True,blank=True,)
     year_purchased = models.CharField(max_length=4,blank=True,null=True,)
     ram = models.CharField(max_length=8)
     storage_capacity = models.CharField(max_length=50,null=True, blank=True)
@@ -53,7 +53,7 @@ class Server(models.Model):
     active = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.model
+        return self.model 
     
     
 
